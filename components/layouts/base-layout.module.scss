@@ -1,0 +1,9 @@
+@import 'styles/base/variables';
+
+.base-layout {
+  height: 100svh;
+  display: flex;
+  flex-flow: column nowrap;
+
+  background-color: $lavendar-0;
+}
