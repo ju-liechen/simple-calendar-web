@@ -2,9 +2,14 @@ Simple Calendar Web
 ==================
 Simple Calendar Web acts is the frontend interace for a simple calendar app. <br/>
 <br/>
-It is a creative playground for Julie to hone her backend skills and experiment with some new ideas. <br/>
+It is a creative playground for Julie to hone her frontend skills and experiment with some new ideas. <br/>
 Why a calendar? Julie is passionate about staying organized, and her calendar app serves as the foundation for her daily routines and tasks.<br/>
 <br/>
+
+Connect to the API:
+------------
+This frontend was built to run in conjuction with [simple-calendar-api](https://github.com/ju-liechen/simple-calendar-api) backend. <br/>
+You will need to run this backend repo locally and set the corresponding environment variables.
 
 Primary Calendar Features:
 ------------
