@@ -1,4 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and modified with some useful utilities, components, and settings that we ([Input Logic](https://github.com/inputlogic)) often need.
+Simple Calendar Web
+==================
+Simple Calendar Web acts is the frontend interace for a simple calendar app. <br/>
+<br/>
+It is a creative playground for Julie to hone her backend skills and experiment with some new ideas. <br/>
+Why a calendar? Julie is passionate about staying organized, and her calendar app serves as the foundation for her daily routines and tasks.<br/>
+<br/>
+
+Primary Calendar Features:
+------------
+- Schedule activities / tasks on a specific day & time (WIP)
+- User profile (WIP)
+
+Future Feature Ideas:
+------------
+- To-do list feature with schedulable tasks
+
+
+Next Starter
+==================
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and modified with some useful utilities, components, and settings that [Input Logic](https://github.com/inputlogic) often needs.
 
 ## Local development
 
