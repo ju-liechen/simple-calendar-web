@@ -1,11 +1,14 @@
+import { Button } from 'components/button'
 import styles from './navigation.module.scss'
 
 export const Navigation = () => {
   return (
     <div className={styles['nav-wrapper']}>
       <h1>Simple Calendar App</h1>
-      <span>Login</span>
-      <span>Sign Up</span>
+      <div className={styles.actions}>
+        <Button>Login</Button>
+        <Button>Sign Up</Button>
+      </div>
     </div>
   )
 }
