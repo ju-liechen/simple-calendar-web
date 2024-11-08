@@ -1,0 +1,40 @@
+@import 'styles/base/variables';
+
+.react-calendar {
+  width: 80%;
+  height: 100%;
+  
+  color: $black;
+  background: $white;
+  border-radius: 8px;
+  border: 1px solid $lavendar-1;
+
+  .heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    padding: 2rem;
+  }
+
+  .body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  :global(.react-aria-CalendarCell) {
+    width: 10rem;
+    height: 9rem;
+    padding-inline: 1rem;
+    line-height: 5rem;
+    text-align: right;
+    border-radius: 6px;
+    cursor: default;
+    outline: solid 1px $lavendar-1;
+    margin: 1px;
+    forced-color-adjust: none;
+    background-color: white;
+  }
+}
