@@ -1,10 +1,14 @@
+import { useRouter } from 'next/router'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as y from 'yup'
-import { Form, useForm, TextInput, SubmitButton } from 'components/form'
-import { queryClient } from 'util/query-client'
-import { axiosClient } from 'util/axios-client'
 
-export const Signup = ({onSuccess, useForm: useFormArgs = {}, ...props}) => {
+import { queryClient } from 'util/query-client'
+import { signupSession } from 'hooks/session'
+import { Form, useForm, TextInput, SubmitButton } from 'components/form'
+
+export const Signup = ({ onSuccess, useForm: useFormArgs = {}, ...props }) => {
+  const router = useRouter()
+
   const methods = useForm({
     resolver: yupResolver(
       y.object().shape({
@@ -13,11 +17,9 @@ export const Signup = ({onSuccess, useForm: useFormArgs = {}, ...props}) => {
       })
     ),
     onSubmit: async (data) => {
-      await axiosClient.post('/public/user/signup', data)
-      queryClient.resetQueries({
-        predicate: query => query.queryKey[0]?.includes('is-logged-in')
-      })
-      onSuccess?.()
+      await signupSession(data)
+      queryClient.invalidateQueries('basicSession')
+      router.replace('/')
     },
     ...useFormArgs
   })
