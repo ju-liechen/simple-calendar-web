@@ -63,7 +63,7 @@ export const Calendar = () => {
         <CalendarButton slot="next">Next</CalendarButton>
       </div>
       <div className={styles.table}>
-        <CalendarGrid weekdayStyle="long">
+        <CalendarGrid weekdayStyle="long" className={styles['cal-grid']}>
           <CalendarGridHeader>
             {(day) => <CalendarHeaderCell>{day}</CalendarHeaderCell>}
           </CalendarGridHeader>

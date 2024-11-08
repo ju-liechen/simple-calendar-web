@@ -26,6 +26,8 @@
 
   :global(.react-aria-CalendarCell) {
     width: 10rem;
+    height: 150px;
+    overflow-y: auto;
     padding-inline: 1rem;
     text-align: right;
     border-radius: 6px;
