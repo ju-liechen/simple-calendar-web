@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
 
 import { useBasicSession } from 'hooks/session'
 import { useLogout, useUser } from './hooks'
@@ -19,7 +20,7 @@ export const Navigation = () => {
 
   return (
     <div className={styles['nav-wrapper']}>
-      <h1>Simple Calendar App</h1>
+      <h1><Link href='/' className={styles.title}>Simple Calendar App</Link></h1>
       <div className={styles.actions}>
         {basicSessionData && basicSessionData.isLoggedIn ? (
           <AnimatePresence>
