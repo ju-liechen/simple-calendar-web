@@ -1,0 +1,40 @@
+@import 'styles/base/variables.scss';
+
+.nav-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding: 20px;
+
+  h1 {
+    margin: 0 auto;
+    cursor: pointer;
+
+    .title {
+      all: unset;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    right: 1rem;
+    align-items: center;
+  }
+}
+
+.animate-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $gutter;
+
+  @media #{$phone} {
+    flex-direction: column;
+    gap: 0;
+  }
+}
