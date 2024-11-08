@@ -1,3 +1,5 @@
+
+import { useQuery } from '@tanstack/react-query'
 import {
   Button as CalendarButton,
   Calendar as CalendarRoot,
@@ -9,9 +11,47 @@ import {
   Heading as CalendarHeading,
 } from 'react-aria-components'
 
+import { EventCard } from 'components/event-card'
+import { parseISO } from 'date-fns';
+
 import styles from './calendar.module.scss'
+import { axiosClient } from 'util/axios-client'
 
 export const Calendar = () => {
+  const { data: eventsData } = useQuery({
+    queryKey: ['userEvents'],
+    queryFn: async () => {
+      const { data } = await axiosClient.get(`/user/schedule/events?month=${11}`)
+      return data
+    }
+  })
+
+  const renderCalendarCell = (date) => {
+    const content =
+      eventsData?.count > 0
+        ? eventsData.results.filter((event) => {
+          const eventDate = parseISO(event.startDateTime)
+          return (
+            eventDate.getFullYear() === date.year &&
+            eventDate.getMonth() + 1 === date.month &&
+            eventDate.getDate() === date.day
+          )
+        }) : []
+    console.log(content)
+    return (
+      <CalendarCell date={date}>
+        {date.day}
+        {content.length > 0 && (
+          <div className={styles.events}>
+            {content.map((event) => (
+              <EventCard key={event.id} data={event} />
+            ))}
+          </div>
+        )}
+      </CalendarCell>
+    )
+  }
+
   return (
     <CalendarRoot
       aria-label="Appointment date"
@@ -22,13 +62,13 @@ export const Calendar = () => {
         <CalendarHeading/>
         <CalendarButton slot="next">Next</CalendarButton>
       </div>
-      <div className={styles.body}>
+      <div className={styles.table}>
         <CalendarGrid weekdayStyle="long">
           <CalendarGridHeader>
             {(day) => <CalendarHeaderCell>{day}</CalendarHeaderCell>}
           </CalendarGridHeader>
           <CalendarGridBody>
-            {(date) => <CalendarCell date={date} />}
+            {(date) => renderCalendarCell(date)}
           </CalendarGridBody>
         </CalendarGrid>
       </div>

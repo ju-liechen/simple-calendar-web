@@ -17,7 +17,7 @@
     padding: 2rem;
   }
 
-  .body {
+  .table {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,15 +26,20 @@
 
   :global(.react-aria-CalendarCell) {
     width: 10rem;
-    height: 9rem;
     padding-inline: 1rem;
-    line-height: 5rem;
     text-align: right;
     border-radius: 6px;
     cursor: default;
     outline: solid 1px $lavendar-1;
-    margin: 1px;
+    margin: 2px;
     forced-color-adjust: none;
-    background-color: white;
+
+    .events {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-start; 
+      gap: 5px;
+      padding-bottom: 5px;
+    }
   }
 }
