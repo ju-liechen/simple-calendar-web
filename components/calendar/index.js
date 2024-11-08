@@ -21,7 +21,7 @@ export const Calendar = () => {
   const { data: eventsData } = useQuery({
     queryKey: ['userEvents'],
     queryFn: async () => {
-      const { data } = await axiosClient.get(`/user/schedule/events?month=${11}`)
+      const { data } = await axiosClient.get(`/user/schedule/events`)
       return data
     }
   })
@@ -37,7 +37,6 @@ export const Calendar = () => {
             eventDate.getDate() === date.day
           )
         }) : []
-    console.log(content)
     return (
       <CalendarCell date={date}>
         {date.day}
@@ -63,7 +62,7 @@ export const Calendar = () => {
         <CalendarButton slot="next">Next</CalendarButton>
       </div>
       <div className={styles.table}>
-        <CalendarGrid weekdayStyle="long">
+        <CalendarGrid weekdayStyle="long" className={styles['cal-grid']}>
           <CalendarGridHeader>
             {(day) => <CalendarHeaderCell>{day}</CalendarHeaderCell>}
           </CalendarGridHeader>

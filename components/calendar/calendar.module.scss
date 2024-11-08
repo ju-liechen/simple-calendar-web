@@ -1,13 +1,15 @@
 @import 'styles/base/variables';
 
 .react-calendar {
-  width: 80%;
-  height: 100%;
+  width: fit-content;
+  height: fit-content;
   
   color: $black;
   background: $white;
   border-radius: 8px;
   border: 1px solid $lavendar-1;
+  width: 100%;
+  height: 100%;
 
   .heading {
     display: flex;
@@ -26,11 +28,17 @@
 
   :global(.react-aria-CalendarCell) {
     width: 10rem;
+    height: 150px;
+    overflow-y: auto;
     padding-inline: 1rem;
     text-align: right;
     border-radius: 6px;
     cursor: default;
-    outline: solid 1px $lavendar-1;
+
+    outline: solid 1px $lavendar-2;
+    background-color: #fcfbff;
+    color: $lavendar-3;
+    
     margin: 2px;
     forced-color-adjust: none;
 
@@ -41,5 +49,15 @@
       gap: 5px;
       padding-bottom: 5px;
     }
+
+    .data-outside-month {
+      background-color: red;
+    }
+  }
+
+  :global(.react-aria-CalendarCell[data-outside-month="true"]) {
+    outline: solid 1px $middle-grey;
+    background-color: $light-grey;
+    color: $dark-grey;
   }
 }
