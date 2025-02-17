@@ -1,5 +1,6 @@
 
 import { useQuery } from '@tanstack/react-query'
+import { parseISO } from 'date-fns'
 import {
   Button as CalendarButton,
   Calendar as CalendarRoot,
@@ -12,12 +13,15 @@ import {
 } from 'react-aria-components'
 
 import { EventCard } from 'components/event-card'
-import { parseISO } from 'date-fns';
 
-import styles from './calendar.module.scss'
+import { useBasicSession } from 'hooks/session'
 import { axiosClient } from 'util/axios-client'
 
+import styles from './calendar.module.scss'
+
+
 export const Calendar = () => {
+  const { data: basicSessionData } = useBasicSession()
   const { data: eventsData } = useQuery({
     queryKey: ['userEvents'],
     queryFn: async () => {
@@ -61,6 +65,7 @@ export const Calendar = () => {
         <CalendarHeading/>
         <CalendarButton slot="next">Next</CalendarButton>
       </div>
+      {!basicSessionData?.isLoggedIn && <div className={styles.warning}>Please log in to view your events</div>}
       <div className={styles.table}>
         <CalendarGrid weekdayStyle="long" className={styles['cal-grid']}>
           <CalendarGridHeader>
