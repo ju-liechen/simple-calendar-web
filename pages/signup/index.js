@@ -3,7 +3,7 @@ import { Signup as SignupForm } from 'components/forms/signup'
 
 import styles from './signup.module.scss'
 
-const Signup = () => {
+const SignupPage = () => {
   const router = useRouter()
   return (
     <div className={styles['signup-wrapper']}>
@@ -13,5 +13,5 @@ const Signup = () => {
   )
 }
 
-Signup.Layouts = ['BaseLayout']
-export default Signup
+SignupPage.Layouts = ['BaseLayout']
+export default SignupPage

@@ -1,9 +1,10 @@
 @import 'styles/base/variables';
 
 .base-layout {
-  height: 100svh;
+  height: 110svh;
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
 
   background-color: $lavendar-0;
 }

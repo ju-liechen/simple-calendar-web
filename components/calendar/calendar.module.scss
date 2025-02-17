@@ -1,0 +1,73 @@
+@import 'styles/base/variables';
+
+.react-calendar {
+  width: fit-content;
+  height: fit-content;
+  
+  color: $black;
+  background: $white;
+  border-radius: 8px;
+  border: 1px solid $lavendar-1;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    padding: 2rem;
+    width: 100%;
+  }
+
+  .warning {
+    color: $error;
+  }
+
+  .table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    width: 100%;
+  }
+
+  :global(.react-aria-CalendarCell) {
+    width: 10rem;
+    height: 150px;
+    overflow-y: auto;
+    padding-inline: 1rem;
+    text-align: right;
+    border-radius: 6px;
+    cursor: default;
+
+    outline: solid 1px $lavendar-2;
+    background-color: #fcfbff;
+    color: $lavendar-3;
+    
+    margin: 2px;
+    forced-color-adjust: none;
+
+    .events {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-start; 
+      gap: 5px;
+      padding-bottom: 5px;
+    }
+
+    .data-outside-month {
+      background-color: red;
+    }
+  }
+
+  :global(.react-aria-CalendarCell[data-outside-month="true"]) {
+    outline: solid 1px $middle-grey;
+    background-color: $light-grey;
+    color: $dark-grey;
+  }
+}
