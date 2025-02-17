@@ -10,6 +10,18 @@ import styles from './event-details.module.scss'
 
 export function EventDetails() {
   const setModal = useStore((state) => state.setModal)
+  const eventData = useStore((state) => state.modalState)
+
+  const formattedStartTime = new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    hour12: true,
+  }).format(new Date(eventData.startDateTime))
+
+  const formattedEndTime = new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    hour12: true,
+  }).format(new Date(eventData.endDateTime))
+
 
   function closeModal() {
     setModal(null)
@@ -27,12 +39,11 @@ export function EventDetails() {
     <Modal variant="small white" onClose={closeModal}>
       <Form className={styles['content-wrapper']} methods={methods}>
         <h2 className={classnames(['modal-title', styles.title])}>
-          Event Details
+          {eventData.title}
         </h2>
         <div className={styles.body}>
-          <div className={styles['select-wrapper']}>
-            Info here
-          </div>
+          <span>{formattedStartTime}</span>
+          <span>{formattedEndTime}</span>
         </div>
         <div className={styles.actions}>
           <SubmitButton fullWidth disabled={false}>
